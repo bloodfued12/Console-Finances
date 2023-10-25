@@ -1,4 +1,4 @@
-var finances = [
+let finances = [
   ['Jan-2010', 867884],
   ['Feb-2010', 984655],
   ['Mar-2010', 322013],
@@ -97,11 +97,40 @@ var finances = [
 
 // The total number of months included in the dataset.[done]
 
-var totalMonths = finances.length;
+let totalMonths = finances.length;
 console.log(totalMonths);
 
 // The net total amount of Profit/Losses over the entire period.
+// console.log(last.num);
 
+var netTotal;
+//   for (var i = 0; i < finances.length; i++) {
+//   for(var j = 0; j = salary[i].length; j < finances.length j++) {
+//     console.log(finances[i][j]);
+//   }
+//   }
+// ;
+console.log(sum(...finances));
+// This loop is for outer array
+for (let x in finances) {
+  netTotal += Number(finances[x][1]);
+}
+console.log(Number(netTotal));
+for (var i = 0, l1 = finances.length; i < l1; i++) {
+
+  // This loop is for inner-arrays
+      // Accessing each elements of inner-array
+      console.log(finances[i][1] ); 
+  
+}
+
+
+
+console.log(Object.keys(finances.keys));
+// console.log("The value of the array is " + netTotal);
+
+
+// console.log(netTotal);
 // The average of the changes in Profit/Losses over the entire period.
 
 // You will need to track what the total change in profits is from month to month and then find the average.
