@@ -118,22 +118,48 @@ for(var i = 0; i < finances.length; i++){
 // logs the new date for the array
 console.log(changes);
 //adds the new data of a - b within the array and adds it to its own array averageChanges
-for(var i = 0; i < changes.length; i++){
+for(var i = 0; i < changes.length-1; i++){
+  // changes.slice(86, -87);
   averageChanges.push(Math.abs(changes[i]-=changes[i+1]));
 };
 // logs the array
 console.log(averageChanges);
 // attemps to turn the averageChanges array into a singular value and stored in the variable total.
-var total = averageChanges.reduce(getChanges, 0);
-function getChanges(total, num) {
-return(averageChanges += Math.abs(num));
+var numMonths = finances.length;
+var totalChange = 0;
+// Iterate through the array starting from the second month
+for (let i = 1; i < numMonths; i++) {
+  // Get the current month's value and the previous month's value
+  let currentMonthValue = finances[i][1];
+  let previousMonthValue = finances[i - 1][1];
+
+  // Calculate the monthly change by subtracting the previous month's value from the current month's value
+  let monthlyChange = currentMonthValue - previousMonthValue;
+
+  // Add the monthly change to the total change
+  totalChange += monthlyChange;
+}
+
+// Calculate the average change by dividing the total change by the number of months minus one
+let averageChange = totalChange / (numMonths - 1);
+
+// Display the average change to the console
+console.log("Average Change: " + averageChange.toFixed(2));
+
+
+function largestElement(num) {
+  for(var i = 0; i < 0; i++) {
+  if(num > 0){
+    var biggestDecrease = new Map.arr.push(arr[i]);
+  } else {
+    var biggestIncrease = new Map.arr.push(arr[i]);
+  }
+  console.log({biggestDecrease} + {biggestIncrease});
+  }
 };
-// logs the variable
-//result: a string of array elements
-console.log(total);
-// logs type of string to console. expected output: singular value
-console.log(typeof(total));
-// console.log()
+console.log(largestElement(averageChanges));
+
+
 // function destruct(x, i){
 // for(var i = 0; i < averageChanges.length; i++){
 //   var x = ["a","b","c","d","e", "f", "g", "h", "i", "j", "k", "l",
