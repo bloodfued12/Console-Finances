@@ -117,17 +117,21 @@ for(var i = 0; i < finances.length; i++){
 }
 // logs the new date for the array
 console.log(changes);
-//
+//adds the new data of a - b within the array and adds it to its own array averageChanges
 for(var i = 0; i < changes.length; i++){
   averageChanges.push(Math.abs(changes[i]-=changes[i+1]));
 };
+// logs the array
 console.log(averageChanges);
-
+// attemps to turn the averageChanges array into a singular value and stored in the variable total.
 var total = averageChanges.reduce(getChanges, 0);
 function getChanges(total, num) {
 return(averageChanges += Math.abs(num));
 };
+// logs the variable
+//result: a string of array elements
 console.log(total);
+// logs type of string to console. expected output: singular value
 console.log(typeof(total));
 // console.log()
 // function destruct(x, i){
