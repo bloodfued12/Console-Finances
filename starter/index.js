@@ -100,38 +100,66 @@ let finances = [
 let totalMonths = finances.length;
 console.log(totalMonths);
 
-// The net total amount of Profit/Losses over the entire period.
-// console.log(last.num);
-
-var netTotal;
-//   for (var i = 0; i < finances.length; i++) {
-//   for(var j = 0; j = salary[i].length; j < finances.length j++) {
-//     console.log(finances[i][j]);
-//   }
-//   }
-// ;
-console.log(sum(...finances));
-// This loop is for outer array
+// The net total amount of Profit/Losses over the entire period. [done]
+var netTotal = 0;
 for (let x in finances) {
   netTotal += Number(finances[x][1]);
 }
 console.log(Number(netTotal));
-for (var i = 0, l1 = finances.length; i < l1; i++) {
-
-  // This loop is for inner-arrays
-      // Accessing each elements of inner-array
-      console.log(finances[i][1] ); 
-  
-}
 
 
-
-console.log(Object.keys(finances.keys));
-// console.log("The value of the array is " + netTotal);
-
-
-// console.log(netTotal);
 // The average of the changes in Profit/Losses over the entire period.
+// looping through the finances array to get a new array of the values for each period
+var changes = [];
+var averageChanges = [];
+for(var i = 0; i < finances.length; i++){
+  changes.push(finances[i][1]);
+}
+// logs the new date for the array
+console.log(changes);
+//
+for(var i = 0; i < changes.length; i++){
+  averageChanges.push(Math.abs(changes[i]-=changes[i+1]));
+};
+console.log(averageChanges);
+
+var total = averageChanges.reduce(getChanges, 0);
+function getChanges(total, num) {
+return(averageChanges += Math.abs(num));
+};
+console.log(total);
+console.log(typeof(total));
+// console.log()
+// function destruct(x, i){
+// for(var i = 0; i < averageChanges.length; i++){
+//   var x = ["a","b","c","d","e", "f", "g", "h", "i", "j", "k", "l",
+// "m", "n", "o", "p", "g", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+// for(x[i] < x.length) {
+//   x[i] += averageChanges[i];
+// }
+// }}
+// console.log(x);
+
+
+
+// ToDo: This is the code that is currently being tested
+// var pLChanges = 0;
+// for(var i = 0; i< averageChanges.length; i++){
+// pLChanges += averageChanges.values() / averageChanges.length;
+// }
+// console.log(pLChanges);
+// var sumOfChanges = 0;
+// console.log(averageChanges);
+// for(var i = 0; i < averageChanges.length; i++){
+// sumOfChanges = averageChanges[i] + averageChanges[i+1];
+// }
+// console.log(sumOfChanges);
+
+
+
+// averageChanges = averageChanges/finances.length;
+// sum()
+// console.log(averageChanges.toFixed(2));
 
 // You will need to track what the total change in profits is from month to month and then find the average.
 
