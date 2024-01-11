@@ -109,17 +109,37 @@ console.log(Number(netTotal));
 
 
 // The average of the changes in Profit/Losses over the entire period.
-var average = 0;
+// looping through the finances array to get a new array of the values for each period
+var changes = [];
 var averageChanges = [];
-// console.log(typeof averageChanges);
-var sum = function(){
-  
-  for(var i = 1; i < finances.length; i++) {
-    averageChanges.push(finances[i][1]- finances[i-1][1]);
-// average += finances[i][1];
+for(var i = 0; i < finances.length; i++){
+  changes.push(finances[i][1]);
 }
+// logs the new date for the array
+console.log(changes);
+//
+for(var i = 0; i < changes.length; i++){
+  averageChanges.push(Math.abs(changes[i]-=changes[i+1]));
 };
 console.log(averageChanges);
+
+var total = averageChanges.reduce(getChanges, 0);
+function getChanges(total, num) {
+return(averageChanges += Math.abs(num));
+};
+console.log(total);
+console.log(typeof(total));
+// console.log()
+// function destruct(x, i){
+// for(var i = 0; i < averageChanges.length; i++){
+//   var x = ["a","b","c","d","e", "f", "g", "h", "i", "j", "k", "l",
+// "m", "n", "o", "p", "g", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+// for(x[i] < x.length) {
+//   x[i] += averageChanges[i];
+// }
+// }}
+// console.log(x);
+
 
 
 // ToDo: This is the code that is currently being tested
@@ -138,7 +158,7 @@ console.log(averageChanges);
 
 
 // averageChanges = averageChanges/finances.length;
-sum()
+// sum()
 // console.log(averageChanges.toFixed(2));
 
 // You will need to track what the total change in profits is from month to month and then find the average.
