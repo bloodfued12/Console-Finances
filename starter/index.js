@@ -91,22 +91,14 @@ let finances = [
 
 // Copy the starter files into your local git repository. [done]
 
-// You have been given a dataset composed of arrays with two fields: Date and Profit/Losses. 
-
-// Your task is to write JavaScript code that analyzes the records to calculate each of the following:
-
 // The total number of months included in the dataset.[done]
-
 let totalMonths = finances.length;
-console.log(totalMonths);
 
 // The net total amount of Profit/Losses over the entire period. [done]
 var netTotal = 0;
 for (let x in finances) {
   netTotal += Number(finances[x][1]);
 }
-console.log(Number(netTotal));
-
 
 // The average of the changes in Profit/Losses over the entire period.
 // looping through the finances array to get a new array of the values for each period
@@ -116,14 +108,14 @@ for(var i = 0; i < finances.length; i++){
   changes.push(finances[i][1]);
 }
 // logs the new date for the array
-console.log(changes);
+// console.log(changes);
 //adds the new data of a - b within the array and adds it to its own array averageChanges
 for(var i = 0; i < changes.length-1; i++){
   // changes.slice(86, -87);
   averageChanges.push(Math.abs(changes[i]-=changes[i+1]));
 };
 // logs the array
-console.log(averageChanges);
+// console.log(averageChanges);
 // attemps to turn the averageChanges array into a singular value and stored in the variable total.
 var numMonths = finances.length;
 var totalChange = 0;
@@ -143,77 +135,41 @@ for (let i = 1; i < numMonths; i++) {
 // Calculate the average change by dividing the total change by the number of months minus one
 let averageChange = totalChange / (numMonths - 1);
 
-// Display the average change to the console
+
+
+var lowestDate = finances[0][0];
+var lowestNumber = finances[0][1];
+var Both = '';
+for (var i = 0; i < finances.length; i++) {
+  if (finances[i][0] < lowestDate) {
+   lowestDate = finances[i][0];
+  }
+
+  if (finances[i][1] < lowestNumber) {
+     lowestNumber = finances[i][1];
+  }
+  Both = "The Greatest decrease in Profits/Losses: " + lowestDate + " " + lowestNumber;
+}
+
+
+// console.log('Lowest number:', lowestNumber);
+// console.log('Date:', lowestDate);
+let highestNumber = -Infinity;
+let highestDate = "";
+for (let i = 0; i < finances.length; i++){
+  let number = finances[i][1];
+  let date = finances[i][0];
+  if(number > highestNumber){
+    highestNumber = number;
+    highestDate = date;
+  }
+  highestBoth = "The greatest increase in Profits/Losses: " +
+  highestDate + " " + highestNumber;
+}
+console.log("Financial analysis");
+console.log("--------------------")
+console.log("Total Months: " + totalMonths);
+console.log("Total: " + Number(netTotal));
 console.log("Average Change: " + averageChange.toFixed(2));
-
-
-function largestElement(num) {
-  for(var i = 0; i < 0; i++) {
-  if(num > 0){
-    var biggestDecrease = new Map.arr.push(arr[i]);
-  } else {
-    var biggestIncrease = new Map.arr.push(arr[i]);
-  }
-  console.log({biggestDecrease} + {biggestIncrease});
-  }
-};
-console.log(largestElement(averageChanges));
-
-
-// function destruct(x, i){
-// for(var i = 0; i < averageChanges.length; i++){
-//   var x = ["a","b","c","d","e", "f", "g", "h", "i", "j", "k", "l",
-// "m", "n", "o", "p", "g", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-// for(x[i] < x.length) {
-//   x[i] += averageChanges[i];
-// }
-// }}
-// console.log(x);
-
-
-
-// ToDo: This is the code that is currently being tested
-// var pLChanges = 0;
-// for(var i = 0; i< averageChanges.length; i++){
-// pLChanges += averageChanges.values() / averageChanges.length;
-// }
-// console.log(pLChanges);
-// var sumOfChanges = 0;
-// console.log(averageChanges);
-// for(var i = 0; i < averageChanges.length; i++){
-// sumOfChanges = averageChanges[i] + averageChanges[i+1];
-// }
-// console.log(sumOfChanges);
-
-
-
-// averageChanges = averageChanges/finances.length;
-// sum()
-// console.log(averageChanges.toFixed(2));
-
-// You will need to track what the total change in profits is from month to month and then find the average.
-
-// (Total/(Number of months - 1))
-
-// The greatest increase in profits (date and amount) over the entire period.
-
-// The greatest decrease in losses (date and amount) over the entire period.
-
-// When you open your code in the browser your resulting analysis should look similar to the following:
-
-// Financial Analysis
-// ----------------------------
-// Total Months: 86
-// Total: $38382578
-// Average Change: -2315.12
-// Greatest Increase in Profits/Losses: Feb-2012 ($1926159)
-// Greatest Decrease in Profits/Losses: Sep-2013 ($-2196167)
-// Your final code should print the analysis to the console.
-
-// Hints:
-
-// You will need to do some research on your own for this project!
-
-// Remember, in order to combine strings and variables in the console, you will need to use concatenation.
-
-// How do you only print to the nearest 100th in JavaScript?
+console.log(Both);
+console.log(highestBoth);
